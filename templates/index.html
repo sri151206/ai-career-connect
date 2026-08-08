@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}AI Career Connect — Your AI-Powered Career Guide{% endblock %}
+{% block meta_description %}Get personalised career recommendations powered by Mistral AI.{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero-section">
+    <h1>Unlock Your Career Potential with AI</h1>
+    <p class="hero-subtitle">
+        Get personalised career recommendations, skill analysis, and
+        AI-powered coaching — all in one platform.
+    </p>
+    <div class="hero-cta">
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary" id="cta-register">Get Started Free</a>
+        <a href="{{ url_for('main.about') }}" class="btn btn-outline" id="cta-learn">Learn More</a>
+    </div>
+</section>
+
+<section class="features" id="features-section">
+    <div class="feature-card">
+        <h3>🎯 Career Analysis</h3>
+        <p>Input your skills and interests — our AI maps them to the best career paths for you.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🤖 AI Chat Advisor</h3>
+        <p>Have a real-time conversation with our Mistral-powered career counsellor.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🎙️ Voice Interface</h3>
+        <p>Speak your questions and hear the answers — hands-free career coaching.</p>
+    </div>
+    <div class="feature-card">
+        <h3>📊 Dynamic Dashboard</h3>
+        <p>Track your progress, view skill analytics, and monitor your career journey.</p>
+    </div>
+</section>
+{% endblock %}

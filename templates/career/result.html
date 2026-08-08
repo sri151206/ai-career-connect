@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Career Recommendation — AI Career Connect{% endblock %}
+
+{% block content %}
+<section class="result-section" id="result-section">
+    <h1>Your AI Career Recommendation</h1>
+
+    <div class="result-meta">
+        <p><strong>Skills:</strong> {{ profile.skills }}</p>
+        <p><strong>Interests:</strong> {{ profile.interests }}</p>
+        <p><strong>Experience:</strong> {{ profile.experience_level }}</p>
+    </div>
+
+    <div class="recommendation-card" id="recommendation-card">
+        <h2>💡 Recommendation</h2>
+        <div class="recommendation-text">{{ profile.ai_recommendation }}</div>
+    </div>
+
+    <!-- ── TTS: read aloud ───────────────────────────────── -->
+    <button class="btn btn-outline" id="read-aloud-btn">🔊 Read Aloud</button>
+
+    <div class="result-actions">
+        <a href="{{ url_for('career.analyze') }}" class="btn btn-primary">Run Another Analysis</a>
+        <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline">Go to Dashboard</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/speech.js') }}"></script>
+{% endblock %}

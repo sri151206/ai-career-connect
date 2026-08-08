@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Career Analysis — AI Career Connect{% endblock %}
+
+{% block content %}
+<section class="analyze-section" id="analyze-section">
+    <h1>Analyse Your Career Path</h1>
+    <form method="POST" action="{{ url_for('career.analyze') }}" class="analyze-form" id="analyze-form">
+        <div class="form-group">
+            <label for="skills">Your Skills (comma-separated)</label>
+            <input type="text" id="skills" name="skills" required
+                   placeholder="Python, Machine Learning, SQL, Communication">
+        </div>
+        <div class="form-group">
+            <label for="interests">Interests & Passions</label>
+            <textarea id="interests" name="interests" rows="3" required
+                      placeholder="I enjoy building data pipelines and exploring AI..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="experience_level">Experience Level</label>
+            <select id="experience_level" name="experience_level">
+                <option value="entry">Entry Level (0-2 years)</option>
+                <option value="mid">Mid Level (3-5 years)</option>
+                <option value="senior">Senior Level (6+ years)</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="analyze-btn">🔍 Analyse with AI</button>
+    </form>
+
+    <!-- ── Voice Input ───────────────────────────────────── -->
+    <div class="voice-section" id="voice-input-section">
+        <h3>Or use your voice 🎙️</h3>
+        <button class="btn btn-outline" id="voice-record-btn">Start Recording</button>
+        <p id="voice-status" class="voice-status"></p>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/speech.js') }}"></script>
+{% endblock %}

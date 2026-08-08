@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — AI Career Connect{% endblock %}
+
+{% block extra_css %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="dashboard-section" id="dashboard-section">
+    <h1>Your Career Dashboard</h1>
+
+    <!-- ── Stats Cards ───────────────────────────────────── -->
+    <div class="stats-row" id="stats-cards">
+        <div class="stat-card" id="stat-profiles">
+            <h3 id="stat-profiles-count">—</h3>
+            <p>Career Analyses</p>
+        </div>
+        <div class="stat-card" id="stat-chats">
+            <h3 id="stat-chats-count">—</h3>
+            <p>AI Conversations</p>
+        </div>
+    </div>
+
+    <!-- ── Skills Chart ──────────────────────────────────── -->
+    <div class="chart-container" id="chart-container">
+        <canvas id="skillsChart"></canvas>
+    </div>
+
+    <!-- ── Recent Profiles ───────────────────────────────── -->
+    <h2>Recent Analyses</h2>
+    <div class="profiles-list" id="profiles-list">
+        {% for profile in profiles %}
+        <div class="profile-card">
+            <p><strong>Skills:</strong> {{ profile.skills }}</p>
+            <p><strong>Level:</strong> {{ profile.experience_level }}</p>
+            <p class="profile-date">{{ profile.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+        </div>
+        {% else %}
+        <p class="empty-state">No analyses yet. <a href="{{ url_for('career.analyze') }}">Run your first one!</a></p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
